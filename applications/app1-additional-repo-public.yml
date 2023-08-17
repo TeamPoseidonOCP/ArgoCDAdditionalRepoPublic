@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app1-additional-repo-public
+  namespace: gitops-developers
+spec:
+  destination:
+    namespace: demo-dev
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: 'https://github.com/TeamPoseidonOCP/argocd_additional_repo_public.git'
+    path: app1-additional-repo-public
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
+  project: demo
