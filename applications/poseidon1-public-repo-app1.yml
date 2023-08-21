@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app1-additional-repo-public
+  name: poseidon1-public-repo-app1
   namespace: gitops-developers
 spec:
   destination:
-    namespace: demo-dev
+    namespace: poseidon1-dev
     server: 'https://kubernetes.default.svc'
   source:
-    repoURL: 'https://github.com/TeamPoseidonOCP/argocd_additional_repo_public.git'
-    path: app1-additional-repo-public
+    repoURL: 'https://github.com/TeamPoseidonOCP/poseidon1_public_repo.git'
+    path: poseidon1-public-repo-app1
     targetRevision: HEAD
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
       allowEmpty: true
-  project: demo
+  project: poseidon1
